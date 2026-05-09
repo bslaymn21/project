@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Alexandria Guide | دليل الإسكندرية الرقمي</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#74777e",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#6d6400",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-surface": "#1a1c1c",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-low": "#f3f3f4",
+                        "primary": "#04213c",
+                        "surface": "#f9f9f9",
+                        "primary-fixed": "#d2e4ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#001d36",
+                        "tertiary-container": "#003761",
+                        "primary-container": "#1e3753",
+                        "background": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#3da2ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#43474d",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#48607e",
+                        "secondary-fixed": "#f8e500",
+                        "tertiary-fixed": "#d1e4ff",
+                        "on-primary-fixed": "#001c37",
+                        "on-primary-fixed-variant": "#304865",
+                        "secondary": "#686000",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-container": "#f5e300",
+                        "surface-dim": "#dadada",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#9fcaff",
+                        "tertiary": "#00213e",
+                        "on-secondary-fixed": "#1f1c00",
+                        "on-background": "#1a1c1c",
+                        "on-primary-container": "#88a0c1",
+                        "on-secondary-fixed-variant": "#4e4800",
+                        "secondary-fixed-dim": "#dac900",
+                        "inverse-surface": "#2f3131",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c4c6ce",
+                        "inverse-primary": "#b0c8eb",
+                        "on-tertiary-fixed-variant": "#00497d",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#b0c8eb",
+                        "surface-container": "#eeeeee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Noto Sans Arabic", "Plus Jakarta Sans", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #04213c 0%, #003761 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link-active {
+            color: #04213c;
+            border-bottom: 2px solid #f8e500;
+            font-weight: 700;
+        }
+
+        section-page {
+            display: none;
+        }
+
+        section-page.active {
+            display: block;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #04213c;
+            border-radius: 10px;
+        }
+
+        /* Infinite Marquee Right - Perfectly Seamless */
+        @keyframes marquee-right {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .animate-marquee-right {
+            display: flex;
+            width: max-content;
+            animation: marquee-right 40s linear infinite;
+        }
+
+        /* Removed hover pause as requested */
+
+        /* Modal Specific Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(4, 33, 60, 0.2);
+            border-radius: 10px;
+        }
+
+        .custom-scroll:hover::-webkit-scrollbar-thumb {
+            background: rgba(4, 33, 60, 0.4);
+        }
+
+        /* Toast Notification Styles */
+        #toast-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 200;
+            display: flex;
+            flex-col: column;
+            gap: 1rem;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: #04213c;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            items-center: center;
+            gap: 0.75rem;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            pointer-events: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 300px;
+            justify-content: space-between;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        @keyframes revealFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(150px) scale(1.1);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1.25);
+            }
+        }
+
+        .animate-hero-text {
+            animation: revealFromRight 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            animation-delay: 1.8s;
+            /* Wait longer for navbar sequence to finish */
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-sans text-on-surface selection:bg-secondary-fixed selection:text-primary">
+
+    <!-- TopAppBar -->
+    <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+            <!-- Spacer for symmetry (replaced logo) -->
+            <div class="w-40 hidden md:block"></div>
+
+            <!-- Centered Navigation -->
+            <nav class="hidden md:flex items-center justify-center gap-10 flex-1">
+                <button onclick="showPage('home')" id="nav-home"
+                    class="nav-link text-white hover:text-secondary-fixed transition-colors font-bold text-lg opacity-0 animate-fade-in"
+                    style="animation-delay: 0.3s;">الرئيسية</button>
+                <button onclick="showPage('landmarks')" id="nav-landmarks"
+                    class="nav-link text-white hover:text-secondary-fixed transition-colors font-bold text-lg opacity-0 animate-fade-in"
+                    style="animation-delay: 0.6s;">المعالم</button>
+                <button onclick="showPage('discover')" id="nav-discover"
+                    class="nav-link text-white hover:text-secondary-fixed transition-colors font-bold text-lg opacity-0 animate-fade-in"
+                    style="animation-delay: 0.9s;">اكتشاف</button>
+                <button onclick="showPage('creators')" id="nav-creators"
+                    class="nav-link text-white hover:text-secondary-fixed transition-colors font-bold text-lg opacity-0 animate-fade-in"
+                    style="animation-delay: 1.2s;">للمبدعين</button>
+            </nav>
+
+            <div class="flex items-center gap-4 w-40 justify-end">
+                <button onclick="openModal('plan')"
+                    class="bg-secondary-fixed text-primary font-bold py-2.5 px-6 rounded-lg transition-all duration-300 ease-in-out hover:opacity-90 shadow-lg opacity-0 animate-fade-in"
+                    style="animation-delay: 1.5s;">خطط لرحلتك</button>
+                <button class="md:hidden text-white p-2 opacity-0 animate-fade-in" style="animation-delay: 1.5s;"
+                    onclick="toggleMobileMenu()">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-outline-variant p-4 space-y-4">
+            <button onclick="showPage('home')"
+                class="block w-full text-right p-2 text-primary font-bold">الرئيسية</button>
+            <button onclick="showPage('landmarks')"
+                class="block w-full text-right p-2 text-primary font-bold">المعالم</button>
+            <button onclick="showPage('discover')"
+                class="block w-full text-right p-2 text-primary font-bold">اكتشاف</button>
+            <button onclick="showPage('creators')"
+                class="block w-full text-right p-2 text-primary font-bold">للمبدعين</button>
+            <button onclick="openModal('plan')"
+                class="block w-full bg-secondary-fixed text-primary font-bold py-3 rounded-lg">خطط لرحلتك</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- PAGE: HOME -->
+        <div id="page-home" class="page active">
+            <!-- Hero Section -->
+            <section class="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <!-- Background Image 1 -->
+                    <img alt="Alexandria Background" class="w-full h-full object-cover" src="assest/1.webp" />
+                    <!-- Dark Overlay for readability -->
+                    <div class="absolute inset-0 bg-black/30"></div>
+                </div>
+                <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
+                    <div class="max-w-4xl ml-auto text-right">
+                        <!-- Text Image 2 (Overlaid) - Animated Entry -->
+                        <img src="assest/2.webp" alt="Alexandria Guide"
+                            class="w-full h-auto mb-12 drop-shadow-2xl opacity-0 animate-hero-text origin-right">
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Bento Grid -->
+            <section class="relative z-20 bg-surface py-24 px-gutter max-w-container-max mx-auto">
+                <div class="mb-16 flex justify-between items-end">
+                    <div>
+                        <span class="text-secondary font-bold tracking-widest uppercase block mb-2">الأماكن
+                            المختارة</span>
+                        <h2 class="text-4xl font-bold text-primary">أبرز الوجهات السياحية</h2>
+                    </div>
+                    <button onclick="showPage('landmarks')"
+                        class="text-on-tertiary-container font-bold flex items-center gap-2 hover:underline">
+                        عرض الكل <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[700px]">
+                    <div class="md:col-span-7 relative rounded-xl overflow-hidden group">
+                        <img alt="Library of Alexandria"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHF5idnFSLBmZSE__onzwm7n51BvSVD7E5yBzkalW4yZj2mf3ieKu80Ry8dv9Rr-fWxpbdVkmL4CCLyJ_MqEa54ADxMofSZNviCdoduoQrlJqiPMaRo1NhMCiNs59ErvLxTH7ws-Ft1jl_Z1g5pcyQhcRSQHyJ_8nba8K4Lm7hxUBN_TtMhEqx2JM6T18U8HR5TNl3EhSe9bDLTCyBsyWoqpELyXRFB72WlSZkhK228LaM2tUp3oVcs1-sRwemkyDY3v056cpv5sM" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <span
+                                class="bg-secondary-fixed text-primary px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">الأكثر
+                                زيارة</span>
+                            <h3 class="text-white text-3xl font-bold mb-2">مكتبة الإسكندرية الجديدة</h3>
+                            <p class="text-white/80 max-w-md">منارة المعرفة المعاصرة، صرح معماري يجمع بين عبق الماضي
+                                وتكنولوجيا المستقبل.</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-5 grid grid-rows-2 gap-6">
+                        <div class="relative rounded-xl overflow-hidden group">
+                            <img alt="Montaza Palace"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzQRm3rFBO5JcCua_30Av_lA17dJ2SCInixRwmqUx_FPfu5kce4a8okJHcpXS8AveDCI3urQOAT-ysds6VLSejHihpmwKZS2aL80uRCsgEWFgAJJzi3dGwKeyD0LKNpcphH3WT30D1WiaivezVPY094kQJ0CEHjTRR4_sRSOvW4L-shUkX7s78wug_3E1JOEawrO2N9zSwfBcF5HVkxhhaykwIEAyUD6Y41KHMIqbU_vixc82GfpxY4JG7DMA9MtPBEKwhWXUFaLU" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent">
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="relative rounded-xl overflow-hidden group h-full">
+                                <img alt="Alexandria Corniche"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNNYitmU9hPQMA0QLxBmdel3nCm5Nuxs9pfIUpnh16ER0Kt1M8XL6-dHW9B2K4g3rwrif0jTa6pr-5WAQxXwG1ia5Vt_hRcXn8LMxJRmh2bjcUAZhlUHRjDBfucItjSdoK6mwi9NSgRF5HlunczRy731xRGlIlxSZbCImoQtqHbbOaxYhRLp0nThDQXa7SfDIT7iz3-wEebsvQWCTls00Ang9UH6-sPe2Y9N_-y8xfj5jS5w65XVHzBZ1LrHppiSnOfXnQjOOGkXk" />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent">
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 p-4">
+                                    <h4 class="text-white font-bold">كورنيش الإسكندرية</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Creators Intro -->
+            <section class="relative z-20 py-24 bg-surface-container-low overflow-hidden">
+                <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1 relative">
+                        <div class="glass-card p-8 rounded-2xl shadow-lg relative z-10 border border-white/50">
+                            <div class="flex items-center gap-4 mb-8">
+                                <div
+                                    class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-secondary-fixed">
+                                    <span class="material-symbols-outlined text-3xl">movie</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-bold text-primary">شارك قصتك</h4>
+                                    <p class="text-on-surface-variant">انضم إلى مجتمع المبدعين</p>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="flex gap-4 p-4 rounded-lg bg-white/40">
+                                    <span class="material-symbols-outlined text-on-tertiary-container">verified</span>
+                                    <div>
+                                        <h5 class="font-bold text-primary">توثيق رسمي</h5>
+                                        <p class="text-on-surface-variant">احصل على شارة "مبدع معتمد" من دليل
+                                            الإسكندرية.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 p-4 rounded-lg bg-white/40">
+                                    <span class="material-symbols-outlined text-on-tertiary-container">visibility</span>
+                                    <div>
+                                        <h5 class="font-bold text-primary">انتشار واسع</h5>
+                                        <p class="text-on-surface-variant">سنعرض محتواك لملايين السياح والزوار سنوياً.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <span class="text-secondary font-bold tracking-widest uppercase block mb-4">للمبدعين
+                            والمصورين</span>
+                        <h2 class="text-5xl font-bold text-primary mb-6">ساهم في رسم صورة مدينتنا</h2>
+                        <p class="text-lg text-on-surface-variant mb-8">نحن نبحث عن المصورين، كتاب المحتوى، وصناع
+                            الأفلام الذين يرون الإسكندرية بعيون مختلفة. انضم إلينا وكن جزءاً من الدليل الرسمي للمدينة.
+                        </p>
+                        <button onclick="showPage('creators')"
+                            class="bg-primary text-white font-bold py-4 px-10 rounded-lg text-xl transition-all hover:bg-tertiary-container">سجل
+                            كصانع محتوى</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE: LANDMARKS -->
+        <div id="page-landmarks" class="page">
+            <section class="relative min-h-screen">
+                <!-- Hero Section for Landmarks -->
+                <div class="relative h-screen w-full overflow-hidden">
+                    <img alt="معالم الإسكندرية" class="w-full h-full object-cover"
+                        src="assest/first/amazing-sunset-cityscape-alexandria-coast-egypt.jpg" />
+                    <!-- Top Gradient for Navbar readability -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent h-1/4">
+                    </div>
+
+                    <!-- Content Overlay -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-primary/90 via-black/20 to-transparent flex items-center justify-start p-gutter md:p-24">
+                        <div class="text-right max-w-4xl animate-fade-in">
+                            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 drop-shadow-2xl">اكتشف معالم
+                                الإسكندرية</h1>
+                            <p class="text-xl md:text-2xl text-white/90 mb-10 drop-shadow-lg">رحلة عبر الزمن في أجمل مدن
+                                البحر المتوسط</p>
+                            <button onclick="openModal('assistant')"
+                                class="bg-secondary-fixed text-primary font-bold py-4 px-10 rounded-full flex items-center gap-3 hover:scale-105 transition-all shadow-2xl text-xl">
+                                <span class="material-symbols-outlined text-3xl">smart_toy</span>
+                                المساعد الذكي
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="max-w-container-max mx-auto px-gutter py-24 bg-surface relative z-10 -mt-20 rounded-t-[4rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+
+                    <!-- Filters -->
+                    <div id="landmark-filters" class="flex flex-wrap gap-4 items-center justify-center mb-12">
+                        <button onclick="filterLandmarks('all')"
+                            class="filter-btn active bg-secondary-container text-on-secondary-container px-8 py-3 rounded-full font-bold shadow-md hover:scale-105 transition-all">الكل</button>
+                        <button onclick="filterLandmarks('historical')"
+                            class="filter-btn bg-white text-primary border border-outline-variant px-8 py-3 rounded-full font-semibold hover:bg-primary-container hover:text-white transition-all">تاريخي</button>
+                        <button onclick="filterLandmarks('entertainment')"
+                            class="filter-btn bg-white text-primary border border-outline-variant px-8 py-3 rounded-full font-semibold hover:bg-primary-container hover:text-white transition-all">ترفيه</button>
+                        <button onclick="filterLandmarks('beaches')"
+                            class="filter-btn bg-white text-primary border border-outline-variant px-8 py-3 rounded-full font-semibold hover:bg-primary-container hover:text-white transition-all">شواطئ</button>
+                        <button onclick="filterLandmarks('cultural')"
+                            class="filter-btn bg-white text-primary border border-outline-variant px-8 py-3 rounded-full font-semibold hover:bg-primary-container hover:text-white transition-all">ثقافة</button>
+                    </div>
+
+                    <!-- Dynamic Results Message -->
+                    <div id="results-header" class="hidden mb-12 text-center animate-fade-in">
+                        <h2 id="results-title" class="text-3xl font-bold text-primary mb-2"></h2>
+                        <p id="results-desc" class="text-on-surface-variant"></p>
+                    </div>
+
+                    <!-- Grid -->
+                    <div id="landmarks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Card 1 -->
+                        <article data-category="historical"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="قلعة قايتباي"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/the castle.jpg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">تاريخي</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">قلعة قايتباي</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">تعتبر من أهم القلاع على ساحل البحر
+                                    الأبيض المتوسط، أنشأها السلطان الأشرف قايتباي في مكان فنار الإسكندرية القديم.</p>
+                                <button onclick="openModal('qaitbay')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+                        <!-- Card 2 -->
+                        <article data-category="cultural"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="مكتبة الإسكندرية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/Alexandria.jpeg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">ثقافة</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">مكتبة الإسكندرية</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">إعادة إحياء لمكتبة الإسكندرية
+                                    القديمة،
+                                    تعد صرحاً ثقافياً ضخماً يضم ملايين الكتب ومتاحف متخصصة.</p>
+                                <button onclick="openModal('library')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+                        <!-- Card 3 -->
+                        <article data-category="beaches"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="كوبري ستانلي"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/كوبري ستانلي.jpeg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-tertiary-fixed text-on-tertiary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">شواطئ</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">كوبري ستانلي</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">أول كوبري في مصر يتم إنشاؤه في
+                                    البحر،
+                                    يتميز بتصميمه المعماري المستوحى من القصور الملكية.</p>
+                                <button onclick="openModal('stanley')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+                        <!-- Card 4 -->
+                        <article data-category="entertainment"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="المنتزه"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/El-Salamlek-Palace-Hotel-Casino-Alexandria-Egypt.jpg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">ترفيه</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">حدائق المنتزة</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">مساحات خضراء شاسعة وقصور ملكية
+                                    تاريخية
+                                    بإطلالة ساحرة على البحر.</p>
+                                <button onclick="openModal('montaza')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 5 - Historical -->
+                        <article data-category="historical"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="المسرح الروماني"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/مسرح روماني.jpeg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">تاريخي</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">المسرح الروماني</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">أحد آثار العصر الروماني وقد تمت
+                                    إقامته
+                                    في بداية القرن الرابع الميلادي.</p>
+                                <button onclick="openModal('theatre')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 6 - Cultural -->
+                        <article data-category="cultural"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="متحف المجوهرات الملكية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/متحف المجوهرات.jpg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">ثقافة</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">متحف المجوهرات</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">يضم مجموعة نادرة من المجوهرات
+                                    والقطع
+                                    الفنية التي تعود لأسرة محمد علي.</p>
+                                <button onclick="openModal('jewelry')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 7 - Historical -->
+                        <article data-category="historical"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="عمود السواري"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/عمود السواري.jpeg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">تاريخي</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">عمود السواري</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">أعلى نصب تذكاري في العالم، يقع فوق
+                                    تل
+                                    باب سدرة بين منطقة مدافن المسلمين.</p>
+                                <button onclick="openModal('pompey')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 8 - Historical -->
+                        <article data-category="historical"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="مقابر كوم الشقافة"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/مقابر كوم الشقافة.jpeg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">تاريخي</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">مقابر كوم الشقافة</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">أكبر المقابر الرومانية العامة في
+                                    مصر،
+                                    تجمع بين الفن المصري والروماني.</p>
+                                <button onclick="openModal('catacombs')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 9 - Cultural -->
+                        <article data-category="cultural"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="متحف الإسكندرية القومي"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/متحف الإسكندرية القومي.jpg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">ثقافة</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">متحف الإسكندرية القومي</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">يحكي تاريخ الإسكندرية منذ فجر
+                                    التاريخ
+                                    وحتى العصر الحديث في قصر فخم.</p>
+                                <button onclick="openModal('national_museum')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 10 - Cultural -->
+                        <article data-category="cultural"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="القبة السماوية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/مركز القبة السماوية.webp" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">ثقافة</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">مركز القبة السماوية</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">مركز تعليمي وثقافي يهدف إلى تبسيط
+                                    العلوم ونشرها من خلال العروض التفاعلية.</p>
+                                <button onclick="openModal('planetarium')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 11 - Beaches -->
+                        <article data-category="beaches"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="شاطئ المعمورة"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/منطقة المعمورة.jpg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">شواطئ</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">منطقة المعمورة</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">أحد أرقى المناطق الشاطئية في
+                                    الإسكندرية، تمتاز بالخصوصية والجمال الساحر.</p>
+                                <button onclick="openModal('mamoura')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Card 12 - Entertainment -->
+                        <article data-category="entertainment"
+                            class="landmark-card group relative bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300">
+                            <div class="relative h-64 overflow-hidden">
+                                <img alt="متحف الأحياء المائية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    src="assest/first/متحف الأحياء المائية.jpeg" />
+                                <div class="absolute top-4 left-4"><span
+                                        class="bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">ترفيه</span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-primary mb-2">متحف الأحياء المائية</h3>
+                                <p class="text-on-surface-variant mb-6 line-clamp-2">يضم مجموعة مذهلة من الكائنات
+                                    البحرية
+                                    والأسماك النادرة من البحر الأحمر والمتوسط.</p>
+                                <button onclick="openModal('aquarium')"
+                                    class="w-full mt-6 bg-primary/5 text-primary border border-primary/10 py-3.5 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
+                                    <span>التفاصيل</span>
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+            </section>
+        </div>
+
+        <!-- PAGE: CREATORS -->
+        <div id="page-creators" class="page">
+            <!-- Hero Section -->
+            <section class="relative h-[60vh] flex items-center overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <img class="w-full h-full object-cover"
+                        src="assest/new/amazing-sunset-cityscape-alexandria-coast-egypt.jpg" />
+                    <div class="absolute inset-0 bg-gradient-to-l from-primary/60 to-transparent"></div>
+                </div>
+                <div class="relative z-10 px-gutter max-w-container-max mx-auto w-full text-white text-right">
+                    <div class="max-w-2xl mr-0 ml-auto">
+                        <span
+                            class="bg-secondary-fixed text-primary px-4 py-1 rounded-full font-bold text-sm mb-6 inline-block">دليل
+                            صناع المحتوى</span>
+                        <h1 class="text-5xl font-bold mb-4 leading-tight">التقط سحر الإسكندرية في كل كادر</h1>
+                        <p class="text-xl mb-8 opacity-90 leading-relaxed">دليلكم الحصري لأفضل زوايا التصوير، نصائح
+                            الإضاءة، والأماكن المخفية.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lighting Rules Section -->
+            <section class="py-24 px-gutter max-w-container-max mx-auto">
+                <div
+                    class="grid md:grid-cols-2 gap-16 items-center bg-primary-container p-12 rounded-[2rem] text-white">
+                    <div>
+                        <h2 class="text-4xl font-bold text-secondary-fixed mb-6">قواعد الإضاءة الذهبية</h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-secondary-fixed/20 p-4 rounded-xl"><span
+                                        class="material-symbols-outlined text-secondary-fixed text-3xl">wb_sunny</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-2 text-right">الساعة الذهبية</h4>
+                                    <p class="text-on-primary-container text-right">توجه إلى قلعة قايتباي؛ الضوء يكون
+                                        ناعماً ودافئاً جداً عند الشروق.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-secondary-fixed/20 p-4 rounded-xl"><span
+                                        class="material-symbols-outlined text-secondary-fixed text-3xl">nightlight</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-2 text-right">أضواء المدينة</h4>
+                                    <p class="text-on-primary-container text-right">كوبري ستانلي هو الأفضل للتصوير
+                                        الليلي والتعريض الطويل.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="glass-card p-6 rounded-2xl border border-white/10 shadow-xl text-primary text-center font-bold">
+                            استخدم عدسة واسعة</div>
+                        <div
+                            class="glass-card p-6 rounded-2xl border border-white/10 shadow-xl text-primary text-center font-bold">
+                            تصوير 60fps للموج</div>
+                        <div
+                            class="glass-card p-6 rounded-2xl border border-white/10 shadow-xl text-primary text-center font-bold">
+                            فلاتر دافئة</div>
+                        <div
+                            class="glass-card p-6 rounded-2xl border border-white/10 shadow-xl text-primary text-center font-bold">
+                            ترايبود لستانلي</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- THE INFINITE MARQUEE (FROM LEFT TO RIGHT) -->
+            <section class="py-24 overflow-hidden relative">
+                <div class="px-gutter max-w-container-max mx-auto mb-16 text-right">
+                    <h2 class="text-4xl font-bold text-primary mb-4">تجارب من عدسات مبدعينا</h2>
+                    <p class="text-on-surface-variant text-lg">لقطات حية تعكس جمال الإسكندرية بعيون زوارها</p>
+                </div>
+
+                <div class="relative flex overflow-hidden" dir="ltr">
+                    <!-- Animation Container -->
+                    <div class="animate-marquee-right py-4 flex gap-6">
+                        <!-- Set of 13 Images -->
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/Alexandria.jpeg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/AlexandriaHiddeGemsGuide_Website08-6be61bb0-2799-4f69-8a29-2aa2862180ea.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/El-Salamlek-Palace-Hotel-Casino-Alexandria-Egypt.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/Grow up.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/amazing-sunset-cityscape-alexandria-coast-egypt.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/compound.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/first.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/food.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/food2.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/hotel.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/photo-cleopatra-hotel-alexandria-egyptian-families-only-alexandria-1.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/the castle.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/the castle2.jpg" class="w-full h-full object-cover" />
+                        </div>
+
+                        <!-- Duplicate for Loop -->
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/Alexandria.jpeg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/AlexandriaHiddeGemsGuide_Website08-6be61bb0-2799-4f69-8a29-2aa2862180ea.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/El-Salamlek-Palace-Hotel-Casino-Alexandria-Egypt.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/Grow up.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/amazing-sunset-cityscape-alexandria-coast-egypt.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/compound.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/first.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/food.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/food2.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/hotel.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/photo-cleopatra-hotel-alexandria-egyptian-families-only-alexandria-1.jpg"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/the castle.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="w-[400px] h-[550px] flex-shrink-0 rounded-[3rem] overflow-hidden shadow-xl border-2 border-primary/5 group">
+                            <img src="assest/new/the castle2.jpg" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 text-center">
+                    <button onclick="showToast('add_a_photo', 'شكراً لرغبتك في المشاركة! سيتم فتح قسم الرفع قريباً.')"
+                        class="bg-primary text-white px-10 py-4 rounded-2xl font-bold hover:bg-secondary-fixed hover:text-primary transition-all shadow-xl flex items-center gap-2 mx-auto text-lg">
+                        <span class="material-symbols-outlined">add_a_photo</span>
+                        شارك تجربتك معنا
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE: DISCOVER -->
+        <div id="page-discover" class="page">
+            <section class="relative h-screen flex items-center overflow-hidden -mt-20">
+                <div class="absolute inset-0 z-0">
+                    <img class="w-full h-full object-cover"
+                        src="assest/new/El-Salamlek-Palace-Hotel-Casino-Alexandria-Egypt.jpg" />
+                    <div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px]"></div>
+                </div>
+                <div class="relative z-10 px-gutter max-w-container-max mx-auto w-full text-white text-center">
+                </div>
+            </section>
+
+            <!-- Hotels Section -->
+            <section class="py-24 px-gutter max-w-container-max mx-auto">
+                <div class="flex items-center gap-6 mb-16 border-r-8 border-secondary-fixed pr-8">
+                    <h2 class="text-4xl font-bold text-primary">إقامة فاخرة</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div
+                        class="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-50 group hover:-translate-y-2 transition-all duration-500">
+                        <div class="h-72 overflow-hidden relative">
+                            <img src="assest/new/hotel.jpg" class="w-full h-full object-cover" />
+                            <div
+                                class="absolute top-6 left-6 bg-white/95 px-4 py-2 rounded-2xl text-primary font-bold shadow-xl flex items-center gap-2">
+                                <span class="material-symbols-outlined text-yellow-500">star</span> 4.9
+                            </div>
+                        </div>
+                        <div class="p-10 text-right">
+                            <h3 class="text-2xl font-bold mb-3">فورسيزونز سان ستيفانو</h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">أيقونة الفخامة السكندرية، يجمع بين الرقي
+                                العصري والإطلالة الساحرة.</p>
+                            <div class="flex flex-wrap gap-2 justify-end">
+                                <span class="bg-primary/5 text-primary px-3 py-1 rounded-lg text-sm font-bold">5
+                                    نجوم</span>
+                                <span class="bg-primary/5 text-primary px-3 py-1 rounded-lg text-sm font-bold">مجمع
+                                    تجاري</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-50 group hover:-translate-y-2 transition-all duration-500">
+                        <div class="h-72 overflow-hidden relative">
+                            <img src="assest/first/ستينبرجر سيسيل.jpeg" class="w-full h-full object-cover" />
+                            <div
+                                class="absolute top-6 left-6 bg-white/95 px-4 py-2 rounded-2xl text-primary font-bold shadow-xl flex items-center gap-2">
+                                <span class="material-symbols-outlined text-yellow-500">star</span> 4.8
+                            </div>
+                        </div>
+                        <div class="p-10 text-right">
+                            <h3 class="text-2xl font-bold mb-3">ستينبرجر سيسيل</h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">فندق تاريخي شهد على زيارات الملوك والمشاهير
+                                عبر العقود.</p>
+                            <div class="flex flex-wrap gap-2 justify-end">
+                                <span
+                                    class="bg-primary/5 text-primary px-3 py-1 rounded-lg text-sm font-bold">تاريخي</span>
+                                <span class="bg-primary/5 text-primary px-3 py-1 rounded-lg text-sm font-bold">وسط
+                                    المدينة</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-50 group hover:-translate-y-2 transition-all duration-500">
+                        <div class="h-72 overflow-hidden relative">
+                            <img src="assest/first/هلنان فلسطين.jpeg" class="w-full h-full object-cover" />
+                            <div
+                                class="absolute top-6 left-6 bg-white/95 px-4 py-2 rounded-2xl text-primary font-bold shadow-xl flex items-center gap-2">
+                                <span class="material-symbols-outlined text-yellow-500">star</span> 4.7
+                            </div>
+                        </div>
+                        <div class="p-10 text-right">
+                            <h3 class="text-2xl font-bold mb-3">هلنان فلسطين</h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">هدوء الطبيعة وجمال حدائق المنتزه الملكية في
+                                مكان واحد.</p>
+                            <div class="flex flex-wrap gap-2 justify-end">
+                                <span class="bg-primary/5 text-primary px-3 py-1 rounded-lg text-sm font-bold">حدائق
+                                    ملكية</span>
+                                <span class="bg-primary/5 text-primary px-3 py-1 rounded-lg text-sm font-bold">شاطئ
+                                    خاص</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Restaurants Section -->
+            <section class="py-24 bg-gray-50 px-gutter">
+                <div class="max-w-container-max mx-auto">
+                    <div class="flex items-center gap-6 mb-16 border-r-8 border-secondary-fixed pr-8">
+                        <h2 class="text-4xl font-bold text-primary">أشهر المطاعم</h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div class="bg-white rounded-[3rem] flex flex-col md:flex-row overflow-hidden shadow-xl group">
+                            <div class="md:w-1/2 h-80 md:h-auto overflow-hidden">
+                                <img src="assest/new/food.jpg"
+                                    class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-700" />
+                            </div>
+                            <div class="md:w-1/2 p-12 text-right flex flex-col justify-center">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex text-yellow-500"><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined">star</span></div>
+                                    <h3 class="text-3xl font-bold"> طاجن علي </h3>
+                                </div>
+                                <p class="text-gray-500 mb-8 text-lg">أرقى تجربة للمأكولات البحرية مع إطلالة بانورامية
+                                    ساحرة على البحر.</p>
+                                <span class="text-primary font-bold text-xl">5.0 / 5.0</span>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-[3rem] flex flex-col md:flex-row overflow-hidden shadow-xl group">
+                            <div class="md:w-1/2 h-80 md:h-auto overflow-hidden">
+                                <img src="assest/new/food2.jpg"
+                                    class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-700" />
+                            </div>
+                            <div class="md:w-1/2 p-12 text-right flex flex-col justify-center">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex text-yellow-500"><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined">star</span><span
+                                            class="material-symbols-outlined text-gray-300">star</span></div>
+                                    <h3 class="text-3xl font-bold">النادي اليوناني</h3>
+                                </div>
+                                <p class="text-gray-500 mb-8 text-lg">مزيج من التاريخ العريق والمذاق اليوناني الأصيل في
+                                    قلب بحري.</p>
+                                <span class="text-primary font-bold text-xl">4.8 / 5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cafes Section -->
+            <section class="py-24 px-gutter max-w-container-max mx-auto">
+                <div class="flex items-center gap-6 mb-20 border-r-8 border-secondary-fixed pr-8">
+                    <h2 class="text-4xl font-bold text-primary">مطاعم سمك </h2>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+                    <div class="text-center group">
+                        <div
+                            class="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden border-8 border-white shadow-2xl group-hover:border-secondary-fixed transition-all duration-500">
+                            <img src="assest/new/first.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary">سمكمك</h4>
+                        <p class="text-yellow-600 font-bold mt-2">4.9 ★★★★★</p>
+                    </div>
+                    <div class="text-center group">
+                        <div
+                            class="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden border-8 border-white shadow-2xl group-hover:border-secondary-fixed transition-all duration-500">
+                            <img src="assest/new/Alexandria.jpeg" class="w-full h-full object-cover" />
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary">سمك بحر</h4>
+                        <p class="text-yellow-600 font-bold mt-2">4.8 ★★★★★</p>
+                    </div>
+                    <div class="text-center group">
+                        <div
+                            class="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden border-8 border-white shadow-2xl group-hover:border-secondary-fixed transition-all duration-500">
+                            <img src="assest/new/the castle.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary">مطبخك</h4>
+                        <p class="text-yellow-600 font-bold mt-2">4.9 ★★★★★</p>
+                    </div>
+                    <div class="text-center group">
+                        <div
+                            class="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden border-8 border-white shadow-2xl group-hover:border-secondary-fixed transition-all duration-500">
+                            <img src="assest/new/the castle2.jpg" class="w-full h-full object-cover" />
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary">اسماكنا</h4>
+                        <p class="text-yellow-600 font-bold mt-2">4.7 ★★★★☆</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-24 bg-primary text-on-primary">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-20 px-gutter max-w-container-max mx-auto">
+            <div class="space-y-6">
+                <a class="text-3xl text-secondary-fixed font-bold" href="#">Alexandria Guide</a>
+                <p class="text-on-primary/80">المنصة الرسمية الرائدة لاستكشاف مدينة الإسكندرية بروح عصرية وتكنولوجيا
+                    ذكية.</p>
+            </div>
+            <div class="flex flex-col gap-4">
+                <h5 class="text-secondary-fixed font-bold">الروابط</h5>
+                <button onclick="showPage('home')"
+                    class="text-right text-on-primary/80 hover:text-secondary-fixed transition-colors">الرئيسية</button>
+                <button onclick="showPage('landmarks')"
+                    class="text-right text-on-primary/80 hover:text-secondary-fixed transition-colors">المعالم</button>
+                <button onclick="showPage('discover')"
+                    class="text-right text-on-primary/80 hover:text-secondary-fixed transition-colors">اكتشاف</button>
+                <button onclick="showPage('creators')"
+                    class="text-right text-on-primary/80 hover:text-secondary-fixed transition-colors">للمبدعين</button>
+            </div>
+            <div class="space-y-6">
+                <h5 class="text-secondary-fixed font-bold">النشرة البريدية</h5>
+                <div class="flex gap-2">
+                    <input class="bg-white/10 border-white/20 rounded-lg flex-1 px-4 py-2 text-white"
+                        placeholder="البريد الإلكتروني" type="email" />
+                    <button onclick="alert('شكراً لاشتراكك!')"
+                        class="bg-secondary-fixed text-primary px-4 py-2 rounded-lg font-bold">اشترك</button>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 py-8 text-center text-on-primary/60 text-sm">
+            <p>© 2024 Alexandria Digital Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <div id="modal-container" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-md" onclick="closeModal()"></div>
+        <div id="modal-content"
+            class="relative bg-white rounded-[2.5rem] max-w-3xl w-full p-8 shadow-2xl scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scroll">
+            <!-- Content will be injected here -->
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container"></div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+                p.style.display = 'none';
+            });
+
+            // Show target page
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+                target.style.display = 'block';
+            }
+
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-link-active'));
+            const nav = document.getElementById('nav-' + pageId);
+            if (nav) nav.classList.add('nav-link-active');
+
+            // Navbar behavior based on page
+            const header = document.getElementById('main-header');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const menuIcon = document.querySelector('.md\\:hidden');
+
+            if (pageId !== 'home' && pageId !== 'landmarks' && pageId !== 'discover') {
+                header.classList.remove('bg-transparent');
+                header.classList.add('bg-white', 'shadow-lg', 'backdrop-blur-md');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-primary');
+                });
+            } else {
+                header.classList.add('bg-transparent');
+                header.classList.remove('bg-white', 'shadow-lg', 'backdrop-blur-md');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-primary');
+                });
+
+                if (pageId === 'landmarks') {
+                    setTimeout(() => openModal('assistant'), 1000);
+                }
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        const landmarkData = {
+            qaitbay: {
+                title: "قلعة قايتباي",
+                desc: "تعتبر قلعة قايتباي من أهم القلاع على ساحل البحر الأبيض المتوسط، أنشأها السلطان الأشرف قايتباي في مكان فنار الإسكندرية القديم الذي تهدم إثر زلزال قوي. استغرق بناؤها عامين، وتعتبر تحفة معمارية عسكرية من العصور الوسطى.",
+                history: "بنيت القلعة في عام 1477 م، واستخدمت حجارة الفنار القديم في بنائها. تتكون من ثلاث طوابق مربعة الشكل، وتضم مسجداً وفرناً ومخازن للأسلحة.",
+                visitors: "15,420 زائر هذا الشهر",
+                images: ["assest/first/the castle.jpg", "assest/first/amazing-sunset-cityscape-alexandria-coast-egypt.jpg"]
+            },
+            library: {
+                title: "مكتبة الإسكندرية",
+                desc: "إعادة إحياء لمكتبة الإسكندرية القديمة، تعد صرحاً ثقافياً ضخماً يضم ملايين الكتب ومتاحف متخصصة ومراكز بحثية. تتميز بتصميمها المعماري الفريد على شكل قرص شمس مائل.",
+                history: "افتتحت في عام 2002، وتعتبر رابع أكبر مكتبة فرنكوفونية في العالم. تضم متاحف للآثار والمخطوطات وتاريخ العلوم.",
+                visitors: "28,900 زائر هذا الشهر",
+                images: ["assest/first/Alexandria.jpeg", "assest/first/amazing-sunset-cityscape-alexandria-coast-egypt.jpg"]
+            },
+            stanley: {
+                title: "كوبري ستانلي",
+                desc: "أول كوبري في مصر يتم إنشاؤه في البحر، يتميز بتصميمه المعماري المستوحى من القصور الملكية، ويعد من أشهر معالم الإسكندرية الحديثة ووجهة مفضلة للتنزه.",
+                history: "تم افتتاحه في عام 2001 بطول 400 متر، وساهم في حل الأزمة المرورية على الكورنيش مع إضافة لمسة جمالية عالمية للمدينة.",
+                visitors: "42,150 زائر هذا الشهر",
+                images: ["assest/first/كوبري ستانلي.jpeg", "assest/first/amazing-sunset-cityscape-alexandria-coast-egypt.jpg"]
+            },
+            montaza: {
+                title: "حدائق المنتزة",
+                desc: "مساحات خضراء شاسعة وقصور ملكية تاريخية (قصر الحرملك والكرنك) بإطلالة ساحرة على البحر. كانت المقر الصيفي للأسرة الملكية في مصر.",
+                history: "أنشأها الخديوي عباس حلمي الثاني في عام 1892، وتضم حدائق استوائية نادرة وشواطئ خاصة وغابات من النخيل.",
+                visitors: "35,600 زائر هذا الشهر",
+                images: ["assest/first/El-Salamlek-Palace-Hotel-Casino-Alexandria-Egypt.jpg", "assest/first/amazing-sunset-cityscape-alexandria-coast-egypt.jpg"]
+            },
+            theatre: {
+                title: "المسرح الروماني",
+                desc: "أحد آثار العصر الروماني وقد تمت إقامته في بداية القرن الرابع الميلادي. يقع في منطقة كوم الدكة، ويعد المسرح الوحيد من نوعه في مصر.",
+                history: "اكتشف بطريق الصدفة عام 1960، يتكون من 13 صفاً من المدرجات الرخامية، وكان يستخدم للعروض المسرحية والاجتماعات الشعبية.",
+                visitors: "12,300 زائر هذا الشهر",
+                images: ["assest/first/مسرح روماني.jpeg", "assest/first/the castle.jpg"]
+            },
+            jewelry: {
+                title: "متحف المجوهرات",
+                desc: "يقع في قصر الأميرة فاطمة الزهراء، ويضم مجموعة نادرة من المجوهرات والقطع الفنية التي تعود لأسرة محمد علي، مرصعة بالماس والزمرد.",
+                history: "بني القصر عام 1919، ويعد في حد ذاته تحفة معمارية تضم لوحات زيتية وزجاجاً ملوناً نادراً يحكي قصصاً تاريخية.",
+                visitors: "9,800 زائر هذا الشهر",
+                images: ["assest/first/متحف المجوهرات.jpg", "assest/first/Alexandria.jpeg"]
+            },
+            pompey: {
+                title: "عمود السواري",
+                desc: "أعلى نصب تذكاري في العالم، يقع فوق تل باب سدرة. صنع من الغرانيت الوردي ويصل طوله إلى حوالي 27 متراً.",
+                history: "أقيم تخليداً للإمبراطور ديوكليتيان في القرن الثالث الميلادي. يحيط به تمثالان لأبي الهول وبقايا معبد السرابيوم.",
+                visitors: "11,200 زائر هذا الشهر",
+                images: ["assest/first/عمود السواري.jpeg", "assest/first/the castle.jpg"]
+            },
+            catacombs: {
+                title: "مقابر كوم الشقافة",
+                desc: "أكبر المقابر الرومانية العامة في مصر، تجمع في تصميمها بين الفن المصري القديم والفن الروماني، وتتكون من ثلاث طوابق تحت الأرض.",
+                history: "اكتشفت عام 1900، وتعد واحدة من عجائب الدنيا السبع في العصور الوسطى نظراً لعمقها وتفاصيلها المنحوتة في الصخر.",
+                visitors: "14,500 زائر هذا الشهر",
+                images: ["assest/first/مقابر كوم الشقافة.jpeg", "assest/first/مسرح روماني.jpeg"]
+            },
+            national_museum: {
+                title: "متحف الإسكندرية القومي",
+                desc: "يحكي تاريخ الإسكندرية منذ العصور الفرعونية واليونانية والرومانية والقبطية والإسلامية وصولاً للعصر الحديث في قصر فخم.",
+                history: "كان القصر مقراً للقنصلية الأمريكية سابقاً، ويضم أكثر من 1800 قطعة أثرية تم اختيارها بعناية لتمثيل تاريخ المدينة.",
+                visitors: "10,900 زائر هذا الشهر",
+                images: ["assest/first/متحف الإسكندرية القومي.jpg", "assest/first/متحف المجوهرات.jpg"]
+            },
+            planetarium: {
+                title: "القبة السماوية",
+                desc: "مركز تعليمي وثقافي يهدف إلى تبسيط العلوم ونشرها من خلال العروض التفاعلية والأفلام العلمية عن الفضاء والكون.",
+                history: "جزء من مكتبة الإسكندرية، تضم مرصداً فلكياً ومتحفاً لتاريخ العلوم، وتقدم عروضاً بتقنيات حديثة جداً.",
+                visitors: "18,700 زائر هذا الشهر",
+                images: ["assest/first/مركز القبة السماوية.webp", "assest/first/Alexandria.jpeg"]
+            },
+            mamoura: {
+                title: "منطقة المعمورة",
+                desc: "أحد أرقى المناطق الشاطئية في الإسكندرية، تمتاز بالخصوصية والجمال الساحر، وتضم مجموعة من أجمل الحدائق والشواطئ الخاصة.",
+                history: "تطورت لتكون منتجعاً سياحياً عالمياً، وتجذب الزوار الراغبين في الهدوء والاستجمام بعيداً عن صخب المدينة.",
+                visitors: "33,400 زائر هذا الشهر",
+                images: ["assest/first/منطقة المعمورة.jpg", "assest/first/amazing-sunset-cityscape-alexandria-coast-egypt.jpg"]
+            },
+            aquarium: {
+                title: "متحف الأحياء المائية",
+                desc: "يضم مجموعة مذهلة من الكائنات البحرية والأسماك النادرة من البحر الأحمر والمتوسط، ويعد وجهة تعليمية ممتعة للأطفال والكبار.",
+                history: "يقع بالقرب من قلعة قايتباي، ويضم أيضاً معهداً لأبحاث علوم البحار والمصايد، ويحتوي على أحواض ضخمة تعرض تنوع الحياة البحرية.",
+                visitors: "22,100 زائر هذا الشهر",
+                images: ["assest/first/متحف الأحياء المائية.jpeg", "assest/first/the castle.jpg"]
+            }
+        };
+
+        function openModal(type) {
+            const container = document.getElementById('modal-container');
+            const content = document.getElementById('modal-content');
+            container.classList.remove('hidden');
+            content.classList.add('scale-95');
+
+            let html = '';
+
+            // Close Button (Floating)
+            const closeBtn = `
+                <button onclick="closeModal()" class="absolute top-4 left-4 z-[110] bg-black/20 hover:bg-black/40 backdrop-blur-md text-white w-10 h-10 rounded-full flex items-center justify-center transition-all">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            `;
+
+            if (type === 'assistant') {
+                html = closeBtn + `
+                <div class="p-4">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="bg-primary p-4 rounded-2xl shadow-lg shadow-primary/20 text-white">
+                            <span class="material-symbols-outlined text-3xl">smart_toy</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-primary">المساعد الرقمي</h2>
+                            <p class="text-on-surface-variant text-sm">كيف يمكنني مساعدتك اليوم؟</p>
+                        </div>
+                    </div>
+                    
+                    <div id="chat-step-1" class="space-y-4">
+                        <div class="bg-primary/5 p-5 rounded-2xl rounded-tr-none text-primary border border-primary/10">
+                            <p class="text-lg leading-relaxed">أهلاً بك! أنا دليلك الذكي في الإسكندرية. ما هو نوع النشاط الذي تفضله؟</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mt-6">
+                            ${['historical', 'entertainment', 'beaches', 'cultural'].map(cat => {
+                    const icons = { historical: 'history_edu', entertainment: 'theater_comedy', beaches: 'waves', cultural: 'menu_book' };
+                    const labels = { historical: 'التاريخ والآثار', entertainment: 'الترفيه والحدائق', beaches: 'البحر والشواطئ', cultural: 'الثقافة والمعرفة' };
+                    return `
+                                    <button onclick="nextAssistantStep('${cat}')" class="flex items-center justify-between p-4 rounded-2xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all group">
+                                        <div class="flex items-center gap-3">
+                                            <span class="material-symbols-outlined text-secondary">${icons[cat]}</span>
+                                            <span class="font-bold text-primary">${labels[cat]}</span>
+                                        </div>
+                                        <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0">arrow_back</span>
+                                    </button>
+                                `;
+                }).join('')}
+                        </div>
+                    </div>
+                </div>
+                `;
+            } else if (landmarkData[type]) {
+                const data = landmarkData[type];
+                html = closeBtn + `
+                <div class="relative -m-8 mb-8 h-80 overflow-hidden">
+                    <img src="${data.images[0]}" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-8">
+                        <div class="animate-fade-in">
+                            <h2 class="text-4xl font-bold text-white mb-2 drop-shadow-xl">${data.title}</h2>
+                            <div class="flex items-center gap-2 text-white/80 text-sm">
+                                <span class="material-symbols-outlined text-sm">location_on</span>
+                                <span>الإسكندرية، مصر</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8 pb-4">
+                    <!-- Stats Card -->
+                    <div class="bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-[2rem] border border-white shadow-inner flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-white/80 p-3 rounded-2xl shadow-sm">
+                                <span class="material-symbols-outlined text-primary text-2xl">trending_up</span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-on-surface-variant font-bold uppercase tracking-wider mb-1">الرواج السياحي</p>
+                                <p class="text-lg font-bold text-primary">${data.visitors}</p>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block">
+                            <div class="flex -space-x-3 rtl:space-x-reverse">
+                                <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200"></div>
+                                <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-300"></div>
+                                <div class="w-10 h-10 rounded-full border-2 border-white bg-primary text-white flex items-center justify-center text-xs font-bold">+50</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                                <div class="w-2 h-8 bg-secondary rounded-full"></div>
+                                اكتشف المكان
+                            </h3>
+                            <p class="text-on-surface-variant leading-relaxed text-lg">${data.desc}</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                                <div class="w-2 h-8 bg-primary rounded-full"></div>
+                                نبذة تاريخية
+                            </h3>
+                            <p class="text-on-surface-variant leading-relaxed italic">${data.history}</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary">photo_library</span>
+                            معرض الصور
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            ${data.images.map((img, i) => `
+                                <div class="group relative overflow-hidden rounded-2xl h-40 border border-outline-variant shadow-sm">
+                                    <img src="${img}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-white">zoom_in</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Action Section -->
+                    <div class="pt-8 border-t border-outline-variant">
+                        <button onclick="closeModal(); showToast('rocket_launch', 'منسق الرحلات سيتواصل معك قريباً لتنظيم رحلة ')" 
+                            class="w-full relative overflow-hidden bg-primary text-white py-5 rounded-[2rem] font-bold shadow-2xl shadow-primary/30 group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                            <div class="relative flex items-center justify-center gap-3 text-lg">
+                                <span class="material-symbols-outlined animate-bounce">rocket_launch</span>
+                                هل تريد تنسيق رحلة ملكية لهذا المكان؟
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                `;
+            }
+
+            content.innerHTML = html;
+            content.scrollTop = 0;
+            setTimeout(() => content.classList.remove('scale-95'), 10);
+        }
+
+        // TOAST SYSTEM
+        function showToast(icon, message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-secondary">${icon}</span>
+                    <span class="font-bold">${message}</span>
+                </div>
+                <span class="material-symbols-outlined text-sm opacity-50 cursor-pointer hover:opacity-100" onclick="this.parentElement.remove()">close</span>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.5s forwards';
+                setTimeout(() => toast.remove(), 500);
+            }, 4000);
+        }
+
+        function closeModal() {
+            const container = document.getElementById('modal-container');
+            const content = document.getElementById('modal-content');
+            content.classList.add('scale-95');
+            setTimeout(() => container.classList.add('hidden'), 300);
+        }
+
+        function filterLandmarks(category) {
+            const cards = document.querySelectorAll('.landmark-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            const resultsHeader = document.getElementById('results-header');
+            const resultsTitle = document.getElementById('results-title');
+            const resultsDesc = document.getElementById('results-desc');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'active', 'font-bold');
+                btn.classList.add('bg-white', 'text-primary', 'font-semibold');
+            });
+
+            // Highlight matching button
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(`'${category}'`)) {
+                    btn.classList.remove('bg-white', 'text-primary', 'font-semibold');
+                    btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'active', 'font-bold');
+                }
+            });
+
+            // Update Results Header
+            if (category === 'all') {
+                resultsHeader.classList.add('hidden');
+            } else {
+                resultsHeader.classList.remove('hidden');
+                const info = {
+                    'historical': { title: 'عبق التاريخ', desc: 'بناءً على اهتمامك بالتاريخ، إليك أهم المواقع الأثرية والقلاع التي تحكي قصة الإسكندرية عبر العصور.' },
+                    'entertainment': { title: 'عالم الترفيه', desc: 'لقد اخترنا لك أفضل الأماكن الترفيهية والحدائق لقضاء وقت ممتع ومليء بالحيوية.' },
+                    'beaches': { title: 'سحر البحر', desc: 'عشاق البحر! إليكم قائمة بأجمل الشواطئ والكباري المطلة على البحر المتوسط.' },
+                    'cultural': { title: 'منارات الثقافة', desc: 'بناءً على شغفك بالمعرفة، إليك المتاحف والمراكز الثقافية الأكثر إلهاماً في المدينة.' }
+                };
+                resultsTitle.innerText = info[category].title;
+                resultsDesc.innerText = info[category].desc;
+            }
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.classList.add('animate-fade-in'), 10);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Scroll to results
+            document.getElementById('landmark-filters').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function nextAssistantStep(category) {
+            selectedCategory = category;
+            const chatContainer = document.getElementById('chat-step-1');
+            chatContainer.classList.add('opacity-0', 'translate-y-4');
+
+            setTimeout(() => {
+                chatContainer.innerHTML = `
+                    <div class="bg-surface-container-low p-4 rounded-2xl rounded-tr-none text-primary max-w-[85%] self-start border border-outline-variant animate-fade-in">
+                        <p class="text-lg">رائع! هل تخطط أيضاً لصناعة محتوى (صور، فيديو، مقال) عن زيارتك لهذه الأماكن؟</p>
+                    </div>
+                    
+                    <div class="flex flex-col gap-2 mt-8 animate-fade-in" style="animation-delay: 0.3s;">
+                        <button onclick="finishAssistant(true)" class="bg-secondary-fixed text-primary px-6 py-4 rounded-xl font-bold transition-all text-right flex justify-between items-center group shadow-md hover:scale-[1.02]">
+                            نعم، أنا صانع محتوى وأريد توثيق الرحلة
+                            <span class="material-symbols-outlined">movie</span>
+                        </button>
+                        <button onclick="finishAssistant(false)" class="bg-white border-2 border-outline-variant hover:border-primary text-primary px-6 py-4 rounded-xl font-bold transition-all text-right flex justify-between items-center group">
+                            لا، أنا زائر أبحث عن الاستمتاع فقط
+                            <span class="material-symbols-outlined">person</span>
+                        </button>
+                    </div>
+                `;
+                chatContainer.classList.remove('opacity-0', 'translate-y-4');
+            }, 300);
+        }
+
+        function finishAssistant(isCreator) {
+            const chatContainer = document.getElementById('chat-step-1');
+            chatContainer.classList.add('opacity-0', 'translate-y-4');
+
+            setTimeout(() => {
+                chatContainer.innerHTML = `
+                    <div class="bg-surface-container-low p-4 rounded-2xl rounded-tr-none text-primary max-w-[85%] self-start border border-outline-variant animate-fade-in">
+                        <p class="text-lg">شكراً لمساعدتنا في تقديم خدمة مميزة تناسب احتياجاتك! نتمنى لك رحلة سعيدة وممتعة في مدينتنا الساحرة.</p>
+                        <p class="text-3xl font-bold mt-4 text-secondary-fixed drop-shadow-sm">Enjoy Alexandria! ✨</p>
+                    </div>
+                    
+                    <button onclick="applyFinalFilters(${isCreator})" class="w-full bg-primary text-white py-4 rounded-xl font-bold mt-8 animate-fade-in shadow-xl hover:bg-primary/90 transition-all">
+                        ابدأ الاستكشاف الآن
+                    </button>
+                `;
+                chatContainer.classList.remove('opacity-0', 'translate-y-4');
+            }, 300);
+        }
+
+        function applyFinalFilters(isCreator) {
+            closeModal();
+            setTimeout(() => {
+                filterLandmarks(selectedCategory);
+                if (isCreator) {
+                    console.log("User is a creator - tailored experience applied.");
+                }
+            }, 400);
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+                p.style.display = 'none';
+            });
+
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+                target.style.display = 'block';
+            }
+
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-link-active'));
+            const nav = document.getElementById('nav-' + pageId);
+            if (nav) nav.classList.add('nav-link-active');
+
+            const header = document.getElementById('main-header');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const menuIcon = document.querySelector('.md\\:hidden');
+
+            if (pageId !== 'home' && pageId !== 'landmarks' && pageId !== 'creators') {
+                header.classList.remove('bg-transparent');
+                header.classList.add('bg-white', 'shadow-lg', 'backdrop-blur-md');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-primary');
+                    link.style.opacity = '1';
+                });
+                if (menuIcon) {
+                    menuIcon.classList.remove('text-white');
+                    menuIcon.classList.add('text-primary');
+                }
+            } else {
+                if (window.scrollY <= 50) {
+                    header.classList.add('bg-transparent');
+                    header.classList.remove('bg-white', 'shadow-lg', 'backdrop-blur-md');
+                    navLinks.forEach(link => {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-primary');
+                    });
+                    if (menuIcon) {
+                        menuIcon.classList.add('text-white');
+                        menuIcon.classList.remove('text-primary');
+                    }
+                }
+                if (pageId === 'landmarks') {
+                    setTimeout(() => openModal('assistant'), 1000);
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function selectMarker(name) {
+            openModal(name.toLowerCase());
+        }
+
+        let selectedCategory = 'all';
+
+        function nextAssistantStep(category) {
+            selectedCategory = category;
+            const chatContainer = document.getElementById('chat-step-1');
+
+            // Fade out step 1 and show step 2
+            chatContainer.classList.add('opacity-0', 'translate-y-4');
+
+            setTimeout(() => {
+                chatContainer.innerHTML = `
+                    <div class="bg-surface-container-low p-4 rounded-2xl rounded-tr-none text-primary max-w-[85%] self-start border border-outline-variant animate-fade-in">
+                        <p class="text-lg">رائع! هل تخطط أيضاً لصناعة محتوى (صور، فيديو، مقال) عن زيارتك لهذه الأماكن؟</p>
+                    </div>
+                    
+                    <div class="flex flex-col gap-2 mt-8 animate-fade-in" style="animation-delay: 0.3s;">
+                        <button onclick="finishAssistant(true)" class="bg-secondary-fixed text-primary px-6 py-4 rounded-xl font-bold transition-all text-right flex justify-between items-center group shadow-md hover:scale-[1.02]">
+                            نعم، أنا صانع محتوى وأريد توثيق الرحلة
+                            <span class="material-symbols-outlined">movie</span>
+                        </button>
+                        <button onclick="finishAssistant(false)" class="bg-white border-2 border-outline-variant hover:border-primary text-primary px-6 py-4 rounded-xl font-bold transition-all text-right flex justify-between items-center group">
+                            لا، أنا زائر أبحث عن الاستمتاع فقط
+                            <span class="material-symbols-outlined">person</span>
+                        </button>
+                    </div>
+                `;
+                chatContainer.classList.remove('opacity-0', 'translate-y-4');
+            }, 300);
+        }
+
+        function finishAssistant(isCreator) {
+            const chatContainer = document.getElementById('chat-step-1');
+            chatContainer.classList.add('opacity-0', 'translate-y-4');
+
+            setTimeout(() => {
+                chatContainer.innerHTML = `
+                    <div class="bg-surface-container-low p-4 rounded-2xl rounded-tr-none text-primary max-w-[85%] self-start border border-outline-variant animate-fade-in">
+                        <p class="text-lg">شكراً لمساعدتنا في تقديم خدمة مميزة تناسب احتياجاتك! نتمنى لك رحلة سعيدة وممتعة في مدينتنا الساحرة.</p>
+                        <p class="text-3xl font-bold mt-4 text-secondary-fixed drop-shadow-sm">Enjoy Alexandria! ✨</p>
+                    </div>
+                    
+                    <button onclick="applyFinalFilters(${isCreator})" class="w-full bg-primary text-white py-4 rounded-xl font-bold mt-8 animate-fade-in shadow-xl hover:bg-primary/90 transition-all">
+                        ابدأ الاستكشاف الآن
+                    </button>
+                `;
+                chatContainer.classList.remove('opacity-0', 'translate-y-4');
+            }, 300);
+        }
+
+        function applyFinalFilters(isCreator) {
+            closeModal();
+            setTimeout(() => {
+                filterLandmarks(selectedCategory);
+                document.getElementById('landmarks-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                if (isCreator) {
+                    setTimeout(() => {
+                        // Using a more subtle toast or just internal logic
+                        console.log("User is a creator - tailored experience applied.");
+                    }, 1000);
+                }
+            }, 400);
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            // Only apply scroll effect on home, landmarks, discover, and creators pages
+            const activePage = document.getElementById('page-home').classList.contains('active') ||
+                document.getElementById('page-landmarks').classList.contains('active') ||
+                document.getElementById('page-discover').classList.contains('active') ||
+                document.getElementById('page-creators').classList.contains('active');
+
+            if (!activePage) return;
+
+            const header = document.getElementById('main-header');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const menuIcon = document.querySelector('.md\\:hidden');
+
+            if (window.scrollY > 50) {
+                header.classList.remove('bg-transparent');
+                header.classList.add('bg-white', 'shadow-lg', 'backdrop-blur-md');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-primary');
+                });
+                if (menuIcon) {
+                    menuIcon.classList.remove('text-white');
+                    menuIcon.classList.add('text-primary');
+                }
+            } else {
+                header.classList.add('bg-transparent');
+                header.classList.remove('bg-white', 'shadow-lg', 'backdrop-blur-md');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary');
+                    link.classList.add('text-white');
+                });
+                if (menuIcon) {
+                    menuIcon.classList.remove('text-primary');
+                    menuIcon.classList.add('text-white');
+                }
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+    </script>
+
+</body>
+
+</html>
